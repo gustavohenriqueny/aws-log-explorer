@@ -1,0 +1,30 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node/Vite
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# Local configuration, outputs and secrets
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+test-results/
+playwright-report/
+.aws/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/

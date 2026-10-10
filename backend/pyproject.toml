@@ -1,0 +1,50 @@
+[project]
+name = "aws-log-explorer"
+version = "0.1.0"
+description = "Local, read-only ECS and CloudWatch log explorer backend"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi==0.115.12",
+  "pydantic==2.11.3",
+  "uvicorn==0.34.0",
+  "websockets==15.0.1",
+]
+
+[dependency-groups]
+dev = [
+  "httpx==0.28.1",
+  "mypy==1.15.0",
+  "pytest==8.3.5",
+  "pytest-asyncio==0.25.3",
+  "ruff==0.11.2",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+files = ["src"]
+check_untyped_defs = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aws_log_explorer"]
+
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
